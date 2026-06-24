@@ -1,20 +1,21 @@
-# Arkadia Plugins
+# Arkadia Dargoth Plugins
 
-Pluginy do klienta Dargoth (Arkadia MUD). GitHub Actions automatycznie buduje
-i wdraża pluginy po każdym push zipa do `releases/`.
+Pluginy do klienta Dargoth (Arkadia MUD).  
+GitHub Actions automatycznie buduje i wdraża pluginy po każdym push zipa do `releases/`.
 
-## URL pluginów (GitHub Pages)
+## URL pluginów
 
 ```
-https://<twoj-login>.github.io/<nazwa-repo>/imperium_cal.js
-https://<twoj-login>.github.io/<nazwa-repo>/ishtar_cal.js
-https://<twoj-login>.github.io/<nazwa-repo>/truwer.js
+https://isithunzi000.github.io/arkadia-dargoth-plugins/imperium_cal.js
+https://isithunzi000.github.io/arkadia-dargoth-plugins/ishtar_cal.js
+https://isithunzi000.github.io/arkadia-dargoth-plugins/truwer.js
 ```
 
 ## Jak dodać plugin w Dargoth
 
-W ustawieniach klienta podaj URL jako adres pluginu — od tej chwili aktualizacje
-przychodzą automatycznie przy każdym odświeżeniu klienta.
+W ustawieniach klienta podaj wybrany URL jako adres pluginu.  
+Od tej chwili aktualizacje przychodzą automatycznie przy każdym odświeżeniu klienta.  
+Możesz dodać jeden, dwa lub wszystkie trzy — niezależnie od siebie.
 
 ## Jak wgrać aktualizację
 
@@ -22,20 +23,15 @@ przychodzą automatycznie przy każdym odświeżeniu klienta.
 2. Zrób commit i push
 3. GitHub Actions automatycznie buduje i wdraża (~30–60 sek)
 
-Stary ZIP możesz zostawić lub usunąć — liczy się tylko najnowszy dla danego pluginu.
-
 ## Struktura repo
 
 ```
 releases/           <- tu wgrywasz ZIPy
-  imperium_cal_1_8_11.zip
-  ishtar_cal_1_8_11.zip
-  truwer_1_0_2.zip
 scripts/
   build.js          <- skrypt budujący (nie zmieniaj)
 .github/workflows/
   build.yml         <- definicja CI/CD (nie zmieniaj)
-dist/               <- generowane automatycznie (nie commituj ręcznie)
+dist/               <- generowane automatycznie przez Actions
   imperium_cal.js
   ishtar_cal.js
   truwer.js
