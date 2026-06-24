@@ -17,7 +17,7 @@ Pokazuje przybliżony czas do najbliższych wydarzeń w domenie Imperium:
 Jeśli event właśnie trwa — zamiast czasu oczekiwania zobaczysz **TRWA TERAZ** z godziną zakończenia.
 
 **Użycie:** wpisz `/imperium` w linii poleceń klienta.  
-**Pomoc:** `/imperium help` lub `/imperium pomoc`
+**Pomoc:** kliknij przycisk **?** w okienku pluginu.
 
 **URL do instalacji:**
 ```
@@ -38,7 +38,7 @@ Pokazuje przybliżony czas do najbliższych wydarzeń w domenie Ishtar:
 Jeśli event właśnie trwa — zobaczysz **TRWA TERAZ** z godziną zakończenia.
 
 **Użycie:** wpisz `/ishtar` w linii poleceń klienta.  
-**Pomoc:** `/ishtar help` lub `/ishtar pomoc`
+**Pomoc:** kliknij przycisk **?** w okienku pluginu.
 
 **URL do instalacji:**
 ```
@@ -60,7 +60,8 @@ Co możesz zrobić:
 
 Przy odgrywaniu widzisz listę kroków, aktywny jest podświetlony. Możesz edytować tekst tuż przed wysłaniem bez trwałej zmiany sceny.
 
-**Użycie:** wpisz `/truwer` w linii poleceń klienta, albo kliknij pozycję *Truwer* w menu wtyczek.
+**Użycie:** wpisz `/truwer` w linii poleceń klienta, albo kliknij pozycję *Truwer* w menu wtyczek.  
+**Pomoc:** przycisk **Pomoc** wewnątrz okienka pluginu.
 
 **URL do instalacji:**
 ```
@@ -71,10 +72,14 @@ https://isithunzi000.github.io/arkadia-dargoth-plugins/truwer.js
 
 ## Jak zainstalować
 
-1. W kliencie Dargoth otwórz **ustawienia wtyczek** (ikonka puzzla lub menu)
-2. Wybierz **Dodaj wtyczkę przez URL**
-3. Wklej wybrany URL z powyższych i zatwierdź
-4. Gotowe — wtyczka ładuje się przy każdym odświeżeniu klienta, zawsze aktualna
+1. Kliknij przycisk **Skrypty** w kliencie Dargoth
+2. Wpisz URL wybranego pluginu i kliknij **Dodaj**
+3. Gotowe — wtyczka ładuje się przy każdym odświeżeniu klienta, zawsze aktualna
+
+Możesz też wkleić URL bezpośrednio w adresie przeglądarki (zastąp `ADRES_URL` docelowym linkiem):
+```
+https://arkadia.rpg.pl/?add-script=ADRES_URL
+```
 
 Możesz zainstalować jeden, dwa lub wszystkie trzy pluginy — niezależnie od siebie.
 
