@@ -27,7 +27,7 @@ jobs:
           node-version: "22"
 
       - name: Install esbuild
-        run: npm install -g esbuild
+        run: npm install esbuild
 
       - name: Build plugins
         run: node scripts/build.js
