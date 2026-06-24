@@ -1,45 +1,91 @@
-# Arkadia Dargoth Plugins
+# Pluginy do klienta Dargoth — Arkadia MUD
 
-Pluginy do klienta Dargoth (Arkadia MUD).  
-GitHub Actions automatycznie buduje i wdraża pluginy po każdym push zipa do `releases/`.
+Trzy pluginy do przeglądarowego klienta Dargoth dla gry Arkadia MUD.  
+Instalujesz raz przez URL — aktualizacje przychodzą automatycznie.
 
-## URL pluginów
+---
 
+## Kalendarz Imperium — `/imperium`
+
+Pokazuje przybliżony czas do najbliższych wydarzeń w domenie Imperium:
+
+- nów i pełnia Mannslieb (z godziną widoczności sierpa po zachodzie słońca)
+- najbliższe wydarzenie sezonowe (wiosna, lato, jesień, zima)
+- wszystkie święta interkalarne: Hexentag, Mitterfruhl, Sonnstill, Mittherbst, Mondstille
+- Hexennacht i Geheimnisnacht
+
+Jeśli event właśnie trwa — zamiast czasu oczekiwania zobaczysz **TRWA TERAZ** z godziną zakończenia.
+
+**Użycie:** wpisz `/imperium` w linii poleceń klienta.  
+**Pomoc:** `/imperium help` lub `/imperium pomoc`
+
+**URL do instalacji:**
 ```
 https://isithunzi000.github.io/arkadia-dargoth-plugins/imperium_cal.js
+```
+
+---
+
+## Kalendarz Ishtar — `/ishtar`
+
+Pokazuje przybliżony czas do najbliższych wydarzeń w domenie Ishtar:
+
+- główne święta magiczne: Belleteyn i Saovine
+- święta astronomiczne i magiczne: Midinvaerne, Birke, Midaete, Velen, Imbaelk, Lammas
+- pełnia księżyca (okno 2 dni)
+- Festyn w Eysenlaan — dwa najbliższe wystąpienia z przedziałem od–do
+
+Jeśli event właśnie trwa — zobaczysz **TRWA TERAZ** z godziną zakończenia.
+
+**Użycie:** wpisz `/ishtar` w linii poleceń klienta.  
+**Pomoc:** `/ishtar help` lub `/ishtar pomoc`
+
+**URL do instalacji:**
+```
 https://isithunzi000.github.io/arkadia-dargoth-plugins/ishtar_cal.js
+```
+
+---
+
+## Truwer — `/truwer`
+
+Asystent odgrywania scen. Pozwala przygotować scenę jako listę kroków (komend gry) i odegrać ją we własnym tempie, krok po kroku. **Plugin nigdy nic nie wysyła sam** — każda wysyłka to Twój świadomy klik.
+
+Co możesz zrobić:
+
+- tworzyć sceny z kroków: komend gry, pauz z odliczaniem i notatek tylko dla siebie
+- w jednej komendzie podać kilka wariantów oddzielonych `|` — przy odgrywaniu plugin losuje jeden z nich
+- importować sceny z pliku `.txt` lub `.json`, eksportować je z powrotem
+- trzymać osobną bibliotekę scen dla każdej postaci
+
+Przy odgrywaniu widzisz listę kroków, aktywny jest podświetlony. Możesz edytować tekst tuż przed wysłaniem bez trwałej zmiany sceny.
+
+**Użycie:** wpisz `/truwer` w linii poleceń klienta, albo kliknij pozycję *Truwer* w menu wtyczek.
+
+**URL do instalacji:**
+```
 https://isithunzi000.github.io/arkadia-dargoth-plugins/truwer.js
 ```
 
-## Jak dodać plugin w Dargoth
+---
 
-W ustawieniach klienta podaj wybrany URL jako adres pluginu.  
-Od tej chwili aktualizacje przychodzą automatycznie przy każdym odświeżeniu klienta.  
-Możesz dodać jeden, dwa lub wszystkie trzy — niezależnie od siebie.
+## Jak zainstalować
 
-## Jak wgrać aktualizację
+1. W kliencie Dargoth otwórz **ustawienia wtyczek** (ikonka puzzla lub menu)
+2. Wybierz **Dodaj wtyczkę przez URL**
+3. Wklej wybrany URL z powyższych i zatwierdź
+4. Gotowe — wtyczka ładuje się przy każdym odświeżeniu klienta, zawsze aktualna
 
-1. Wrzuć nowy ZIP do folderu `releases/` (konwencja: `pluginname_wersja.zip`)
-2. Zrób commit i push
-3. GitHub Actions automatycznie buduje i wdraża (~30–60 sek)
+Możesz zainstalować jeden, dwa lub wszystkie trzy pluginy — niezależnie od siebie.
 
-## Struktura repo
+---
 
-```
-releases/           <- tu wgrywasz ZIPy
-scripts/
-  build.js          <- skrypt budujący (nie zmieniaj)
-.github/workflows/
-  build.yml         <- definicja CI/CD (nie zmieniaj)
-dist/               <- generowane automatycznie przez Actions
-  imperium_cal.js
-  ishtar_cal.js
-  truwer.js
-  index.json
-```
+## Uwagi
 
-## Ustawienie GitHub Pages (jednorazowo)
+- Kalendarze działają na bazie komendy `czas` — plugin automatycznie ją wysyła i parsuje odpowiedź serwera
+- Przelicznik czasu: **2 sekundy RL = 1 minuta IG** (120 sek RL = 1 godz IG)
+- Jeśli serwer nie odpowie na `czas` w ciągu 3,5 sekundy, plugin wyświetli komunikat o błędzie zamiast zgadywać
 
-1. Settings → Pages → Source: **Deploy from a branch**
-2. Branch: **gh-pages** / root
-3. Save
+---
+
+*Pluginy działają wyłącznie z klientem Dargoth (przeglądarkowym). Nie są przeznaczone dla innych klientów MUD.*
