@@ -33,7 +33,7 @@ Pokazuje przybliżony czas do najbliższych wydarzeń w domenie Imperium:
 
 Jeśli event właśnie trwa — zobaczysz **TRWA TERAZ** z godziną zakończenia.
 
-Pomoc: kliknij **Kalendarz Imperium** w menu Skrypty.
+Pomoc: kliknij **Kalendarz Imperium** w menu klienta.
 
 ---
 
@@ -55,7 +55,7 @@ Pokazuje przybliżony czas do najbliższych wydarzeń w domenie Ishtar:
 
 Jeśli event właśnie trwa — zobaczysz **TRWA TERAZ** z godziną zakończenia.
 
-Pomoc: kliknij **Kalendarz Ishtar** w menu Skrypty.
+Pomoc: kliknij **Kalendarz Ishtar** w menu klienta.
 
 ---
 
