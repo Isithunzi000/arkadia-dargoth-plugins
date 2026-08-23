@@ -85,7 +85,13 @@ Pomoc: przycisk **Pomoc** wewnątrz okna pluginu.
 
 - Kalendarze działają na bazie komendy `czas` — plugin wysyła ją automatycznie i parsuje odpowiedź serwera
 - Przelicznik czasu: 2 sekundy RL = 1 minuta IG
-- Jeśli serwer nie odpowie na `czas` w ciągu 3,5 sekundy, plugin wyświetli komunikat o błędzie
+- Jeśli serwer nie odpowie na `czas` w ciągu 3,5 s, plugin pokaże wyniki z zapisanej daty (jeśli ją ma), a dopiero gdy jej nie ma — komunikat o błędzie
+
+---
+
+## Dla maintainera
+
+Nowa wersja pluginu: edytuj `index.ts` i `plugin.json` (źródła to zawartość najnowszego zipa danego pluginu w `releases/`), potem `python3 scripts/make_release_zip.py <katalog_źródłowy> <plugin> X.Y.Z` → commit z nowym zipem w `releases/` → push. Workflow Pages sam buduje `dist/` i `index.json` — odpala się wyłącznie przy zmianie `releases/*.zip`. Build jest deterministyczny: te same źródła = identyczny SHA-256 zipa.
 
 ---
 
