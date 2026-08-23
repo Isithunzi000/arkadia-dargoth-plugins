@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "releases/*.zip"
+      - "scripts/build.js"
   workflow_dispatch:
 
 permissions:

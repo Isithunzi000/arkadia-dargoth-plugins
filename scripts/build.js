@@ -14,13 +14,37 @@ fs.mkdirSync(TMP,  { recursive: true });
 const zips = fs.readdirSync(RELEASES).filter(f => f.endsWith(".zip"));
 if (!zips.length) { console.log("Brak zipow w releases/"); process.exit(0); }
 
+// Wybor najnowszej wersji kazdego pluginu: sortowanie SEMANTYCZNE po numerze
+// wersji z nazwy zipa (nie alfabetyczne - "1_8_20" > "1_8_15" mimo ze
+// alfabetycznie odwrotnie). Budowany jest wylacznie najnowszy zip per plugin.
+function splitZip(zip) {
+    const m = zip.match(/^(.+?)_(\d+(?:_\d+)*)\.zip$/);
+    if (!m) return null;
+    return { name: m[1], ver: m[2].split("_").map(Number) };
+}
+function verCmp(a, b) {  // malejaco: nowsza wersja najpierw
+    for (let i = 0; i < Math.max(a.length, b.length); i++) {
+        const x = a[i] || 0, y = b[i] || 0;
+        if (x !== y) return y - x;
+    }
+    return 0;
+}
+const latestByPlugin = {};
+for (const zip of zips) {
+    const parsed = splitZip(zip);
+    if (!parsed) { console.error(`  POMINIETY (nieparsowalna nazwa): ${zip}`); continue; }
+    const cur = latestByPlugin[parsed.name];
+    if (!cur || verCmp(parsed.ver, splitZip(cur).ver) < 0) latestByPlugin[parsed.name] = zip;
+}
+const zipsToBuild = Object.values(latestByPlugin).sort();
+
 (async () => {
     let ok = 0;
     const index = [];
 
-    for (const zip of zips) {
+    for (const zip of zipsToBuild) {
         const zipPath = path.join(RELEASES, zip);
-        const pluginName = zip.replace(/_[\d._]+\.zip$/, "").replace(/\.zip$/, "");
+        const pluginName = splitZip(zip).name;
         const tmpDir = path.join(TMP, pluginName);
 
         console.log(`\n[${pluginName}] Rozpakowuje ${zip}...`);
