@@ -22,7 +22,7 @@ Możesz zainstalować jeden, dwa lub wszystkie trzy — niezależnie od siebie.
 https://isithunzi000.github.io/arkadia-dargoth-plugins/imperium_cal.js
 ```
 
-Wpisz `/imperium` żeby zobaczyć wyniki.
+Wpisz `/imperium` żeby zobaczyć wyniki. Komenda `/imperium reset` czyści zapamiętaną datę.
 
 Pokazuje przybliżony czas do najbliższych wydarzeń w domenie Imperium:
 
@@ -44,7 +44,7 @@ Pomoc: kliknij **Kalendarz Imperium** w menu klienta.
 https://isithunzi000.github.io/arkadia-dargoth-plugins/ishtar_cal.js
 ```
 
-Wpisz `/ishtar` żeby zobaczyć wyniki.
+Wpisz `/ishtar` żeby zobaczyć wyniki. Komenda `/ishtar reset` czyści zapamiętaną datę.
 
 Pokazuje przybliżony czas do najbliższych wydarzeń w domenie Ishtar:
 
@@ -84,6 +84,7 @@ Pomoc: przycisk **Pomoc** wewnątrz okna pluginu.
 ## Uwagi
 
 - Kalendarze działają na bazie komendy `czas` — plugin wysyła ją automatycznie i parsuje odpowiedź serwera
+- Zapamiętana data odnawia się z każdej poprawnej odpowiedzi serwera na `czas` — także gdy odczyt wywołało coś innego (wtedy bez raportu i bez ukrywania linii)
 - Przelicznik czasu: 2 sekundy RL = 1 minuta IG
 - Jeśli serwer nie odpowie na `czas` w ciągu 3,5 s, plugin pokaże wyniki z zapisanej daty (jeśli ją ma), a dopiero gdy jej nie ma — komunikat o błędzie
 
