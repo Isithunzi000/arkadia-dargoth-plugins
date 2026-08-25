@@ -75,6 +75,19 @@ const zipsToBuild = Object.values(latestByPlugin).sort();
 
         try {
             const src = fs.readFileSync(tsFile, "utf8");
+
+            // Guard spojnosci wersji (B2): nazwa zipa == PLUGIN_VERSION ==
+            // plugin.json metadata.version. Zle nazwany zip nie moze
+            // wdrozyc sie po cichu - mismatch przerywa caly build.
+            const zipVer = splitZip(zip).ver.join(".");
+            const mPv = src.match(/const PLUGIN_VERSION = "([^"]+)"/);
+            const pjVer = JSON.parse(fs.readFileSync(
+                path.join(path.dirname(tsFile), "plugin.json"), "utf8")).metadata.version;
+            if (!mPv || mPv[1] !== zipVer || pjVer !== zipVer) {
+                console.error(`  BLAD: niespojnosc wersji w ${zip}: nazwa=${zipVer} PLUGIN_VERSION=${mPv && mPv[1]} plugin.json=${pjVer}`);
+                process.exit(1);
+            }
+
             const result = await esbuild.transform(src, {
                 loader:  "ts",
                 format:  "esm",
