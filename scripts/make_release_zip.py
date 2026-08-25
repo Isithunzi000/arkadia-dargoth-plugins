@@ -20,6 +20,7 @@ Przyklad (nowa wersja ishtar_cal 1.8.16):
 """
 import hashlib
 import os
+import re
 import sys
 import zipfile
 
@@ -61,7 +62,7 @@ def main():
     if len(sys.argv) != 4:
         raise SystemExit(__doc__)
     src_root, pkg, version = sys.argv[1], sys.argv[2], sys.argv[3]
-    if not version.replace(".", "").isdigit():
+    if not re.fullmatch(r"\d+\.\d+\.\d+", version):
         raise SystemExit("BLAD: wersja ma byc w formacie X.Y.Z, dostalem: " + version)
     here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     out = os.path.join(here, "releases", pkg + "_" + version.replace(".", "_") + ".zip")

@@ -12,7 +12,10 @@ fs.mkdirSync(DIST, { recursive: true });
 fs.mkdirSync(TMP,  { recursive: true });
 
 const zips = fs.readdirSync(RELEASES).filter(f => f.endsWith(".zip"));
-if (!zips.length) { console.log("Brak zipow w releases/"); process.exit(0); }
+if (!zips.length) {
+    console.error("BLAD: brak zipow w releases/ — pustego dist/ nie wolno publikowac");
+    process.exit(1);
+}
 
 // Wybor najnowszej wersji kazdego pluginu: sortowanie SEMANTYCZNE po numerze
 // wersji z nazwy zipa (nie alfabetyczne - "1_8_20" > "1_8_15" mimo ze
@@ -50,7 +53,13 @@ const zipsToBuild = Object.values(latestByPlugin).sort();
         console.log(`\n[${pluginName}] Rozpakowuje ${zip}...`);
         fs.rmSync(tmpDir, { recursive: true, force: true });
         fs.mkdirSync(tmpDir, { recursive: true });
-        execSync(`unzip -q "${zipPath}" -d "${tmpDir}"`);
+        try {
+            execSync(`unzip -q "${zipPath}" -d "${tmpDir}"`);
+        } catch (e) {
+            console.error(`  POMINIETY (uszkodzony zip): ${zip}`);
+            process.exitCode = 1;
+            continue;
+        }
 
         const tsFiles = execSync(`find "${tmpDir}" -name "index.ts"`, { encoding: "utf8" })
             .trim().split("\n").filter(Boolean);
