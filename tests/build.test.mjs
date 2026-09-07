@@ -33,12 +33,17 @@ function runBuild(root) {
 }
 
 function makeGoodZip(root, name) {
-  // Prawdziwy zip z index.ts (python3 jest wymagane i tak przez make_release_zip).
+  // Prawdziwy zip z index.ts + plugin.json (python3 jest wymagane i tak przez
+  // make_release_zip). Guard B2 w build.js wymaga spojnosci: nazwa zipa ==
+  // PLUGIN_VERSION == plugin.json metadata.version — fixture to spelnia.
+  const ver = name.match(/_(\d+(?:_\d+)*)\.zip$/)[1].split('_').join('.');
+  const ts = `const PLUGIN_VERSION = "${ver}";\nexport async function init() {}`;
+  const pj = JSON.stringify({ metadata: { version: ver } });
   const r = spawnSync('python3', [
     '-c',
     'import sys, zipfile; zf = zipfile.ZipFile(sys.argv[1], "w"); ' +
-      'zf.writestr("index.ts", "export async function init() {}"); zf.close()',
-    path.join(root, 'releases', name),
+      'zf.writestr("index.ts", sys.argv[2]); zf.writestr("plugin.json", sys.argv[3]); zf.close()',
+    path.join(root, 'releases', name), ts, pj,
   ]);
   assert.equal(r.status, 0, 'nie udalo sie zlozyc fixture-zipa');
 }
