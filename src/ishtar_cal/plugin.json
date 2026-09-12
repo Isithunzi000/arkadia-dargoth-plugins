@@ -1,0 +1,11 @@
+{
+  "name": "ishtar_cal",
+  "entryPoint": "index.ts",
+  "metadata": {
+    "name": "ishtar_cal",
+    "version": "1.8.23",
+    "author": "Isithunzi000",
+    "description": "Kalendarz Ishtar wylicza czas RL dla wydarzeń domeny bazując na czasie IG uzyskanym z gry (alias /ishtar)."
+  },
+  "folders": []
+}

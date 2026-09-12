@@ -92,7 +92,9 @@ Pomoc: przycisk **Pomoc** wewnątrz okna pluginu.
 
 ## Dla maintainera
 
-Nowa wersja pluginu: edytuj `index.ts` i `plugin.json` (źródła to zawartość najnowszego zipa danego pluginu w `releases/`), potem `python3 scripts/make_release_zip.py <katalog_źródłowy> <plugin> X.Y.Z` → commit z nowym zipem w `releases/` → push. Workflow Pages sam buduje `dist/` i `index.json` — odpala się wyłącznie przy zmianie `releases/*.zip`. Build jest deterministyczny: te same źródła = identyczny SHA-256 zipa.
+Źródła pluginów leżą w `src/<plugin>/` (`index.ts` + `plugin.json`) — są bajtowo identyczne z zawartością najnowszego zipa danego pluginu w `releases/` (pilnuje tego test `src-spojnosc` w repo arkadia-dargoth-testy).
+
+Nowa wersja pluginu: edytuj źródła w `src/<plugin>/`, potem `python3 scripts/make_release_zip.py src <plugin> X.Y.Z` → **jeden commit** ze zmianą w `src/` i nowym zipem w `releases/` → push. Workflow Pages sam buduje `dist/` i `index.json` — odpala się wyłącznie przy zmianie `releases/*.zip` (commity dotykające tylko `src/` nie odpalają builda). Build jest deterministyczny: te same źródła = identyczny SHA-256 zipa.
 
 ---
 

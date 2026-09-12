@@ -1,0 +1,12 @@
+{
+  "name": "imperium_cal",
+  "entryPoint": "index.ts",
+  "metadata": {
+    "name": "imperium_cal",
+    "version": "1.8.24",
+    "author": "Isithunzi000",
+    "description": "Kalendarz Imperium wylicza czas RL dla wydarzeń domeny bazując na czasie IG uzyskanym z gry (alias /imperium)."
+  },
+  "folders": [],
+  "version": "1.8.24"
+}

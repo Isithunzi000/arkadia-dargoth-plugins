@@ -1,0 +1,11 @@
+{
+  "name": "truwer",
+  "entryPoint": "index.ts",
+  "metadata": {
+    "name": "truwer",
+    "version": "1.0.10",
+    "author": "Isithunzi000",
+    "description": "Truwer to asystent odgrywania sekwencyjnego, śpiewanie piosenek, deklamowanie wierszy, odgrywanie scen lub rytuałów (alias /truwer). Plugin w pełni zgodny z regulaminem gry — wszystkie komendy wysyłane świadomie przez gracza, bez automatyki."
+  },
+  "folders": []
+}
