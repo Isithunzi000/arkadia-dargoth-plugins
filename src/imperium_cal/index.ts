@@ -6,8 +6,8 @@ import PluginApi, {
 const PLUGIN_NAME = "imperium_cal";
 const TAG = "imperium_cal";
 
-const PLUGIN_VERSION = "1.8.24";
-const PLUGIN_BUILD_DATE = "07-09-2026";
+const PLUGIN_VERSION = "1.8.25";
+const PLUGIN_BUILD_DATE = "23-09-2026";
 
 const REAL_MS_PER_GAME_MINUTE = 2000;
 const YEAR_LENGTH_DAYS = 400;
@@ -1178,6 +1178,8 @@ export async function init(api: PluginApi): Promise<PluginInfo> {
     id: "imperium_help",
     title: "Kalendarz Imperium",
     createContent: async () => buildHelpContent(),
+    initialWidth: 480,
+    initialHeight: "content",
   });
 
   helpMenuHandle = api.ui.addPopupMenuEntry("Kalendarz Imperium", () => {
