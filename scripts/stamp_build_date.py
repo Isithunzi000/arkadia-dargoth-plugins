@@ -28,6 +28,9 @@ TARGETS = [
     ('truwer/index.ts',
      re.compile(r'const PLUGIN_BUILD_DATE = "\d{2}-\d{2}-\d{4}"'),
      'const PLUGIN_BUILD_DATE = "%s"'),
+    ('treningi/index.ts',
+     re.compile(r'const PLUGIN_BUILD_DATE = "\d{2}-\d{2}-\d{4}"'),
+     'const PLUGIN_BUILD_DATE = "%s"'),
 ]
 
 # tryb "strict": brak pliku = blad; tryb "scan": brak pliku = pomijamy

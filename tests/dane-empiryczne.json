@@ -1,0 +1,1938 @@
+{
+ "meta": {
+  "zrodlo": "pomiary cen treningow z gry (1148 wpisow tabelkowych)",
+  "model": "koszt = max(1, trunc((3*i*i-3*i+1) * k / 100)), i=poziom 0..100",
+  "spojnosc": "287/287 pomiarow pasuje, 0 naruszen"
+ },
+ "umiejetnosci": {
+  "akrobatyka": {
+   "pomiary": [
+    {
+     "koszt_mdz": 1,
+     "poziomy": [
+      0,
+      1
+     ]
+    },
+    {
+     "koszt_mdz": 63,
+     "poziomy": [
+      6
+     ]
+    },
+    {
+     "koszt_mdz": 151,
+     "poziomy": [
+      9
+     ]
+    },
+    {
+     "koszt_mdz": 189,
+     "poziomy": [
+      10
+     ]
+    },
+    {
+     "koszt_mdz": 718,
+     "poziomy": [
+      19
+     ]
+    }
+   ],
+   "procentCeny": 70
+  },
+  "alchemia": {
+   "pomiary": [
+    {
+     "koszt_mdz": 1,
+     "poziomy": [
+      0,
+      1
+     ]
+    }
+   ],
+   "procentCeny": 70
+  },
+  "blokowanie wyjscia": {
+   "pomiary": [
+    {
+     "koszt_mdz": 1,
+     "poziomy": [
+      0,
+      1
+     ]
+    },
+    {
+     "koszt_mdz": 91,
+     "poziomy": [
+      6
+     ]
+    },
+    {
+     "koszt_mdz": 397,
+     "poziomy": [
+      12
+     ]
+    },
+    {
+     "koszt_mdz": 1027,
+     "poziomy": [
+      19
+     ]
+    }
+   ],
+   "procentCeny": 100
+  },
+  "bronie drzewcowe": {
+   "pomiary": [
+    {
+     "koszt_mdz": 264,
+     "poziomy": [
+      11
+     ]
+    },
+    {
+     "koszt_mdz": 821,
+     "poziomy": [
+      19
+     ]
+    },
+    {
+     "koszt_mdz": 1325,
+     "poziomy": [
+      24
+     ]
+    }
+   ],
+   "procentCeny": 80
+  },
+  "kieszonkostwo": {
+   "pomiary": [
+    {
+     "koszt_mdz": 1,
+     "poziomy": [
+      0,
+      1
+     ]
+    },
+    {
+     "koszt_mdz": 88,
+     "poziomy": [
+      7
+     ]
+    },
+    {
+     "koszt_mdz": 118,
+     "poziomy": [
+      8
+     ]
+    },
+    {
+     "koszt_mdz": 504,
+     "poziomy": [
+      16
+     ]
+    },
+    {
+     "koszt_mdz": 571,
+     "poziomy": [
+      17
+     ]
+    }
+   ],
+   "procentCeny": 70
+  },
+  "lowiectwo": {
+   "pomiary": [
+    {
+     "koszt_mdz": 1,
+     "poziomy": [
+      0,
+      1
+     ]
+    },
+    {
+     "koszt_mdz": 360,
+     "poziomy": [
+      16
+     ]
+    },
+    {
+     "koszt_mdz": 513,
+     "poziomy": [
+      19
+     ]
+    },
+    {
+     "koszt_mdz": 570,
+     "poziomy": [
+      20
+     ]
+    },
+    {
+     "koszt_mdz": 630,
+     "poziomy": [
+      21
+     ]
+    }
+   ],
+   "procentCeny": 50
+  },
+  "maczugi": {
+   "pomiary": [
+    {
+     "koszt_mdz": 3,
+     "poziomy": [
+      2
+     ]
+    },
+    {
+     "koszt_mdz": 45,
+     "poziomy": [
+      6
+     ]
+    },
+    {
+     "koszt_mdz": 630,
+     "poziomy": [
+      21
+     ]
+    },
+    {
+     "koszt_mdz": 1134,
+     "poziomy": [
+      28
+     ]
+    }
+   ],
+   "procentCeny": 50
+  },
+  "magiczne zwoje": {
+   "pomiary": [
+    1
+   ],
+   "procentCeny": null
+  },
+  "miecze": {
+   "pomiary": [
+    {
+     "koszt_mdz": 1951,
+     "poziomy": [
+      26
+     ]
+    },
+    {
+     "koszt_mdz": 2269,
+     "poziomy": [
+      28
+     ]
+    },
+    {
+     "koszt_mdz": 2791,
+     "poziomy": [
+      31
+     ]
+    },
+    {
+     "koszt_mdz": 2977,
+     "poziomy": [
+      32
+     ]
+    },
+    {
+     "koszt_mdz": 3367,
+     "poziomy": [
+      34
+     ]
+    },
+    {
+     "koszt_mdz": 3781,
+     "poziomy": [
+      36
+     ]
+    },
+    {
+     "koszt_mdz": 4219,
+     "poziomy": [
+      38
+     ]
+    },
+    {
+     "koszt_mdz": 4681,
+     "poziomy": [
+      40
+     ]
+    },
+    {
+     "koszt_mdz": 5167,
+     "poziomy": [
+      42
+     ]
+    },
+    {
+     "koszt_mdz": 5677,
+     "poziomy": [
+      44
+     ]
+    },
+    {
+     "koszt_mdz": 6211,
+     "poziomy": [
+      46
+     ]
+    },
+    {
+     "koszt_mdz": 6487,
+     "poziomy": [
+      47
+     ]
+    },
+    {
+     "koszt_mdz": 7057,
+     "poziomy": [
+      49
+     ]
+    },
+    {
+     "koszt_mdz": 7651,
+     "poziomy": [
+      51
+     ]
+    },
+    {
+     "koszt_mdz": 8269,
+     "poziomy": [
+      53
+     ]
+    },
+    {
+     "koszt_mdz": 8911,
+     "poziomy": [
+      55
+     ]
+    }
+   ],
+   "procentCeny": 100
+  },
+  "mierzony cios": {
+   "pomiary": [
+    {
+     "koszt_mdz": 1,
+     "poziomy": [
+      0,
+      1
+     ]
+    },
+    {
+     "koszt_mdz": 7,
+     "poziomy": [
+      2
+     ]
+    },
+    {
+     "koszt_mdz": 61,
+     "poziomy": [
+      5
+     ]
+    },
+    {
+     "koszt_mdz": 217,
+     "poziomy": [
+      9
+     ]
+    },
+    {
+     "koszt_mdz": 469,
+     "poziomy": [
+      13
+     ]
+    },
+    {
+     "koszt_mdz": 817,
+     "poziomy": [
+      17
+     ]
+    },
+    {
+     "koszt_mdz": 1261,
+     "poziomy": [
+      21
+     ]
+    },
+    {
+     "koszt_mdz": 1951,
+     "poziomy": [
+      26
+     ]
+    },
+    {
+     "koszt_mdz": 2611,
+     "poziomy": [
+      30
+     ]
+    },
+    {
+     "koszt_mdz": 3367,
+     "poziomy": [
+      34
+     ]
+    },
+    {
+     "koszt_mdz": 4219,
+     "poziomy": [
+      38
+     ]
+    },
+    {
+     "koszt_mdz": 5167,
+     "poziomy": [
+      42
+     ]
+    },
+    {
+     "koszt_mdz": 6211,
+     "poziomy": [
+      46
+     ]
+    },
+    {
+     "koszt_mdz": 7651,
+     "poziomy": [
+      51
+     ]
+    },
+    {
+     "koszt_mdz": 8911,
+     "poziomy": [
+      55
+     ]
+    }
+   ],
+   "procentCeny": 100
+  },
+  "mloty": {
+   "pomiary": [
+    {
+     "koszt_mdz": 5,
+     "poziomy": [
+      2
+     ]
+    },
+    {
+     "koszt_mdz": 173,
+     "poziomy": [
+      9
+     ]
+    },
+    {
+     "koszt_mdz": 653,
+     "poziomy": [
+      17
+     ]
+    },
+    {
+     "koszt_mdz": 821,
+     "poziomy": [
+      19
+     ]
+    },
+    {
+     "koszt_mdz": 1008,
+     "poziomy": [
+      21
+     ]
+    }
+   ],
+   "procentCeny": 80
+  },
+  "ocena obiektu": {
+   "pomiary": [
+    {
+     "koszt_mdz": 459,
+     "poziomy": [
+      18
+     ]
+    },
+    {
+     "koszt_mdz": 975,
+     "poziomy": [
+      26
+     ]
+    },
+    {
+     "koszt_mdz": 1395,
+     "poziomy": [
+      31
+     ]
+    },
+    {
+     "koszt_mdz": 1488,
+     "poziomy": [
+      32
+     ]
+    },
+    {
+     "koszt_mdz": 1584,
+     "poziomy": [
+      33
+     ]
+    },
+    {
+     "koszt_mdz": 1683,
+     "poziomy": [
+      34
+     ]
+    },
+    {
+     "koszt_mdz": 1785,
+     "poziomy": [
+      35
+     ]
+    },
+    {
+     "koszt_mdz": 1890,
+     "poziomy": [
+      36
+     ]
+    },
+    {
+     "koszt_mdz": 1998,
+     "poziomy": [
+      37
+     ]
+    },
+    {
+     "koszt_mdz": 2109,
+     "poziomy": [
+      38
+     ]
+    },
+    {
+     "koszt_mdz": 2223,
+     "poziomy": [
+      39
+     ]
+    },
+    {
+     "koszt_mdz": 2340,
+     "poziomy": [
+      40
+     ]
+    },
+    {
+     "koszt_mdz": 2460,
+     "poziomy": [
+      41
+     ]
+    }
+   ],
+   "procentCeny": 50
+  },
+  "ocena przeciwnika": {
+   "pomiary": [
+    {
+     "koszt_mdz": 513,
+     "poziomy": [
+      19
+     ]
+    },
+    {
+     "koszt_mdz": 975,
+     "poziomy": [
+      26
+     ]
+    },
+    {
+     "koszt_mdz": 1218,
+     "poziomy": [
+      29
+     ]
+    },
+    {
+     "koszt_mdz": 1395,
+     "poziomy": [
+      31
+     ]
+    },
+    {
+     "koszt_mdz": 1584,
+     "poziomy": [
+      33
+     ]
+    },
+    {
+     "koszt_mdz": 1785,
+     "poziomy": [
+      35
+     ]
+    },
+    {
+     "koszt_mdz": 1998,
+     "poziomy": [
+      37
+     ]
+    },
+    {
+     "koszt_mdz": 2340,
+     "poziomy": [
+      40
+     ]
+    },
+    {
+     "koszt_mdz": 2583,
+     "poziomy": [
+      42
+     ]
+    },
+    {
+     "koszt_mdz": 2838,
+     "poziomy": [
+      44
+     ]
+    },
+    {
+     "koszt_mdz": 3105,
+     "poziomy": [
+      46
+     ]
+    },
+    {
+     "koszt_mdz": 3243,
+     "poziomy": [
+      47
+     ]
+    },
+    {
+     "koszt_mdz": 3528,
+     "poziomy": [
+      49
+     ]
+    },
+    {
+     "koszt_mdz": 3825,
+     "poziomy": [
+      51
+     ]
+    },
+    {
+     "koszt_mdz": 4134,
+     "poziomy": [
+      53
+     ]
+    },
+    {
+     "koszt_mdz": 4620,
+     "poziomy": [
+      56
+     ]
+    },
+    {
+     "koszt_mdz": 4959,
+     "poziomy": [
+      58
+     ]
+    },
+    {
+     "koszt_mdz": 5310,
+     "poziomy": [
+      60
+     ]
+    },
+    {
+     "koszt_mdz": 5673,
+     "poziomy": [
+      62
+     ]
+    }
+   ],
+   "procentCeny": 50
+  },
+  "opieka nad zwierzetami": {
+   "pomiary": [
+    {
+     "koszt_mdz": 30,
+     "poziomy": [
+      5
+     ]
+    },
+    {
+     "koszt_mdz": 360,
+     "poziomy": [
+      16
+     ]
+    },
+    {
+     "koszt_mdz": 513,
+     "poziomy": [
+      19
+     ]
+    },
+    {
+     "koszt_mdz": 630,
+     "poziomy": [
+      21
+     ]
+    }
+   ],
+   "procentCeny": 50
+  },
+  "otwieranie zamkow": {
+   "pomiary": [
+    {
+     "koszt_mdz": 1,
+     "poziomy": [
+      0,
+      1
+     ]
+    },
+    {
+     "koszt_mdz": 88,
+     "poziomy": [
+      7
+     ]
+    },
+    {
+     "koszt_mdz": 504,
+     "poziomy": [
+      16
+     ]
+    }
+   ],
+   "procentCeny": 70
+  },
+  "parowanie": {
+   "pomiary": [
+    {
+     "koszt_mdz": 576,
+     "poziomy": [
+      16
+     ]
+    },
+    {
+     "koszt_mdz": 1008,
+     "poziomy": [
+      21
+     ]
+    },
+    {
+     "koszt_mdz": 1560,
+     "poziomy": [
+      26
+     ]
+    },
+    {
+     "koszt_mdz": 1685,
+     "poziomy": [
+      27
+     ]
+    },
+    {
+     "koszt_mdz": 1815,
+     "poziomy": [
+      28
+     ]
+    },
+    {
+     "koszt_mdz": 1949,
+     "poziomy": [
+      29
+     ]
+    },
+    {
+     "koszt_mdz": 2088,
+     "poziomy": [
+      30
+     ]
+    },
+    {
+     "koszt_mdz": 2232,
+     "poziomy": [
+      31
+     ]
+    },
+    {
+     "koszt_mdz": 2381,
+     "poziomy": [
+      32
+     ]
+    },
+    {
+     "koszt_mdz": 2535,
+     "poziomy": [
+      33
+     ]
+    },
+    {
+     "koszt_mdz": 2693,
+     "poziomy": [
+      34
+     ]
+    }
+   ],
+   "procentCeny": 80
+  },
+  "plywanie": {
+   "pomiary": [
+    {
+     "koszt_mdz": 900,
+     "poziomy": [
+      25
+     ]
+    },
+    {
+     "koszt_mdz": 1683,
+     "poziomy": [
+      34
+     ]
+    },
+    {
+     "koszt_mdz": 1785,
+     "poziomy": [
+      35
+     ]
+    },
+    {
+     "koszt_mdz": 1890,
+     "poziomy": [
+      36
+     ]
+    },
+    {
+     "koszt_mdz": 2460,
+     "poziomy": [
+      41
+     ]
+    },
+    {
+     "koszt_mdz": 2970,
+     "poziomy": [
+      45
+     ]
+    },
+    {
+     "koszt_mdz": 3105,
+     "poziomy": [
+      46
+     ]
+    },
+    {
+     "koszt_mdz": 3528,
+     "poziomy": [
+      49
+     ]
+    }
+   ],
+   "procentCeny": 50
+  },
+  "rozkazy": {
+   "pomiary": [
+    {
+     "koszt_mdz": 1,
+     "poziomy": [
+      0,
+      1
+     ]
+    },
+    {
+     "koszt_mdz": 721,
+     "poziomy": [
+      16
+     ]
+    },
+    {
+     "koszt_mdz": 1261,
+     "poziomy": [
+      21
+     ]
+    },
+    {
+     "koszt_mdz": 1387,
+     "poziomy": [
+      22
+     ]
+    },
+    {
+     "koszt_mdz": 1519,
+     "poziomy": [
+      23
+     ]
+    },
+    {
+     "koszt_mdz": 1657,
+     "poziomy": [
+      24
+     ]
+    },
+    {
+     "koszt_mdz": 1801,
+     "poziomy": [
+      25
+     ]
+    }
+   ],
+   "procentCeny": 100
+  },
+  "skradanie sie": {
+   "pomiary": [
+    {
+     "koszt_mdz": 1,
+     "poziomy": [
+      0,
+      1
+     ]
+    },
+    {
+     "koszt_mdz": 118,
+     "poziomy": [
+      8
+     ]
+    },
+    {
+     "koszt_mdz": 151,
+     "poziomy": [
+      9
+     ]
+    },
+    {
+     "koszt_mdz": 231,
+     "poziomy": [
+      11
+     ]
+    },
+    {
+     "koszt_mdz": 571,
+     "poziomy": [
+      17
+     ]
+    },
+    {
+     "koszt_mdz": 882,
+     "poziomy": [
+      21
+     ]
+    },
+    {
+     "koszt_mdz": 1365,
+     "poziomy": [
+      26
+     ]
+    }
+   ],
+   "procentCeny": 70
+  },
+  "spostrzegawczosc": {
+   "pomiary": [
+    {
+     "koszt_mdz": 975,
+     "poziomy": [
+      26
+     ]
+    },
+    {
+     "koszt_mdz": 1890,
+     "poziomy": [
+      36
+     ]
+    },
+    {
+     "koszt_mdz": 2109,
+     "poziomy": [
+      38
+     ]
+    },
+    {
+     "koszt_mdz": 2460,
+     "poziomy": [
+      41
+     ]
+    },
+    {
+     "koszt_mdz": 3105,
+     "poziomy": [
+      46
+     ]
+    }
+   ],
+   "procentCeny": 50
+  },
+  "sztylety": {
+   "pomiary": [
+    {
+     "koszt_mdz": 17,
+     "poziomy": [
+      4
+     ]
+    },
+    {
+     "koszt_mdz": 331,
+     "poziomy": [
+      16
+     ]
+    },
+    {
+     "koszt_mdz": 698,
+     "poziomy": [
+      23
+     ]
+    },
+    {
+     "koszt_mdz": 897,
+     "poziomy": [
+      26
+     ]
+    }
+   ],
+   "procentCeny": 46
+  },
+  "tarczownictwo": {
+   "pomiary": [
+    {
+     "koszt_mdz": 1008,
+     "poziomy": [
+      21
+     ]
+    },
+    {
+     "koszt_mdz": 1325,
+     "poziomy": [
+      24
+     ]
+    },
+    {
+     "koszt_mdz": 1560,
+     "poziomy": [
+      26
+     ]
+    },
+    {
+     "koszt_mdz": 1685,
+     "poziomy": [
+      27
+     ]
+    },
+    {
+     "koszt_mdz": 1815,
+     "poziomy": [
+      28
+     ]
+    },
+    {
+     "koszt_mdz": 2088,
+     "poziomy": [
+      30
+     ]
+    },
+    {
+     "koszt_mdz": 2232,
+     "poziomy": [
+      31
+     ]
+    },
+    {
+     "koszt_mdz": 2535,
+     "poziomy": [
+      33
+     ]
+    },
+    {
+     "koszt_mdz": 2693,
+     "poziomy": [
+      34
+     ]
+    },
+    {
+     "koszt_mdz": 3024,
+     "poziomy": [
+      36
+     ]
+    },
+    {
+     "koszt_mdz": 3197,
+     "poziomy": [
+      37
+     ]
+    },
+    {
+     "koszt_mdz": 3557,
+     "poziomy": [
+      39
+     ]
+    },
+    {
+     "koszt_mdz": 3744,
+     "poziomy": [
+      40
+     ]
+    },
+    {
+     "koszt_mdz": 4133,
+     "poziomy": [
+      42
+     ]
+    },
+    {
+     "koszt_mdz": 4335,
+     "poziomy": [
+      43
+     ]
+    },
+    {
+     "koszt_mdz": 4541,
+     "poziomy": [
+      44
+     ]
+    }
+   ],
+   "procentCeny": 80
+  },
+  "targowanie sie": {
+   "pomiary": [
+    {
+     "koszt_mdz": 630,
+     "poziomy": [
+      21
+     ]
+    }
+   ],
+   "procentCeny": 50
+  },
+  "topory": {
+   "pomiary": [
+    {
+     "koszt_mdz": 4,
+     "poziomy": [
+      2
+     ]
+    },
+    {
+     "koszt_mdz": 571,
+     "poziomy": [
+      17
+     ]
+    },
+    {
+     "koszt_mdz": 882,
+     "poziomy": [
+      21
+     ]
+    },
+    {
+     "koszt_mdz": 1260,
+     "poziomy": [
+      25
+     ]
+    }
+   ],
+   "procentCeny": 70
+  },
+  "tropienie": {
+   "pomiary": [
+    {
+     "koszt_mdz": 1,
+     "poziomy": [
+      0,
+      1
+     ]
+    },
+    {
+     "koszt_mdz": 30,
+     "poziomy": [
+      5
+     ]
+    },
+    {
+     "koszt_mdz": 135,
+     "poziomy": [
+      10
+     ]
+    },
+    {
+     "koszt_mdz": 273,
+     "poziomy": [
+      14
+     ]
+    },
+    {
+     "koszt_mdz": 315,
+     "poziomy": [
+      15
+     ]
+    },
+    {
+     "koszt_mdz": 459,
+     "poziomy": [
+      18
+     ]
+    },
+    {
+     "koszt_mdz": 630,
+     "poziomy": [
+      21
+     ]
+    },
+    {
+     "koszt_mdz": 759,
+     "poziomy": [
+      23
+     ]
+    },
+    {
+     "koszt_mdz": 975,
+     "poziomy": [
+      26
+     ]
+    }
+   ],
+   "procentCeny": 50
+  },
+  "ukrywanie sie": {
+   "pomiary": [
+    {
+     "koszt_mdz": 1,
+     "poziomy": [
+      0,
+      1
+     ]
+    },
+    {
+     "koszt_mdz": 118,
+     "poziomy": [
+      8
+     ]
+    },
+    {
+     "koszt_mdz": 718,
+     "poziomy": [
+      19
+     ]
+    },
+    {
+     "koszt_mdz": 882,
+     "poziomy": [
+      21
+     ]
+    }
+   ],
+   "procentCeny": 70
+  },
+  "uniki": {
+   "pomiary": [
+    {
+     "koszt_mdz": 264,
+     "poziomy": [
+      11
+     ]
+    },
+    {
+     "koszt_mdz": 576,
+     "poziomy": [
+      16
+     ]
+    },
+    {
+     "koszt_mdz": 1560,
+     "poziomy": [
+      26
+     ]
+    },
+    {
+     "koszt_mdz": 1685,
+     "poziomy": [
+      27
+     ]
+    },
+    {
+     "koszt_mdz": 1815,
+     "poziomy": [
+      28
+     ]
+    },
+    {
+     "koszt_mdz": 1949,
+     "poziomy": [
+      29
+     ]
+    },
+    {
+     "koszt_mdz": 2088,
+     "poziomy": [
+      30
+     ]
+    },
+    {
+     "koszt_mdz": 2232,
+     "poziomy": [
+      31
+     ]
+    },
+    {
+     "koszt_mdz": 2381,
+     "poziomy": [
+      32
+     ]
+    },
+    {
+     "koszt_mdz": 2535,
+     "poziomy": [
+      33
+     ]
+    },
+    {
+     "koszt_mdz": 2693,
+     "poziomy": [
+      34
+     ]
+    }
+   ],
+   "procentCeny": 80
+  },
+  "walka bez broni": {
+   "pomiary": [
+    {
+     "koszt_mdz": 648,
+     "poziomy": [
+      16
+     ]
+    },
+    {
+     "koszt_mdz": 735,
+     "poziomy": [
+      17
+     ]
+    },
+    {
+     "koszt_mdz": 1026,
+     "poziomy": [
+      20
+     ]
+    },
+    {
+     "koszt_mdz": 1134,
+     "poziomy": [
+      21
+     ]
+    },
+    {
+     "koszt_mdz": 1248,
+     "poziomy": [
+      22
+     ]
+    },
+    {
+     "koszt_mdz": 1367,
+     "poziomy": [
+      23
+     ]
+    },
+    {
+     "koszt_mdz": 1620,
+     "poziomy": [
+      25
+     ]
+    },
+    {
+     "koszt_mdz": 1755,
+     "poziomy": [
+      26
+     ]
+    },
+    {
+     "koszt_mdz": 2042,
+     "poziomy": [
+      28
+     ]
+    },
+    {
+     "koszt_mdz": 2193,
+     "poziomy": [
+      29
+     ]
+    },
+    {
+     "koszt_mdz": 2511,
+     "poziomy": [
+      31
+     ]
+    },
+    {
+     "koszt_mdz": 2679,
+     "poziomy": [
+      32
+     ]
+    },
+    {
+     "koszt_mdz": 3030,
+     "poziomy": [
+      34
+     ]
+    },
+    {
+     "koszt_mdz": 3213,
+     "poziomy": [
+      35
+     ]
+    },
+    {
+     "koszt_mdz": 3597,
+     "poziomy": [
+      37
+     ]
+    },
+    {
+     "koszt_mdz": 3797,
+     "poziomy": [
+      38
+     ]
+    },
+    {
+     "koszt_mdz": 4002,
+     "poziomy": [
+      39
+     ]
+    }
+   ],
+   "procentCeny": 90
+  },
+  "walka dwiema bronmi": {
+   "pomiary": [
+    {
+     "koszt_mdz": 61,
+     "poziomy": [
+      5
+     ]
+    }
+   ],
+   "procentCeny": 100
+  },
+  "walka pokazowa": {
+   "pomiary": [
+    {
+     "koszt_mdz": 1,
+     "poziomy": [
+      0,
+      1
+     ]
+    },
+    {
+     "koszt_mdz": 7,
+     "poziomy": [
+      2
+     ]
+    },
+    {
+     "koszt_mdz": 61,
+     "poziomy": [
+      5
+     ]
+    },
+    {
+     "koszt_mdz": 217,
+     "poziomy": [
+      9
+     ]
+    },
+    {
+     "koszt_mdz": 469,
+     "poziomy": [
+      13
+     ]
+    },
+    {
+     "koszt_mdz": 817,
+     "poziomy": [
+      17
+     ]
+    },
+    {
+     "koszt_mdz": 1261,
+     "poziomy": [
+      21
+     ]
+    },
+    {
+     "koszt_mdz": 1951,
+     "poziomy": [
+      26
+     ]
+    },
+    {
+     "koszt_mdz": 2611,
+     "poziomy": [
+      30
+     ]
+    },
+    {
+     "koszt_mdz": 3367,
+     "poziomy": [
+      34
+     ]
+    },
+    {
+     "koszt_mdz": 4219,
+     "poziomy": [
+      38
+     ]
+    },
+    {
+     "koszt_mdz": 5167,
+     "poziomy": [
+      42
+     ]
+    },
+    {
+     "koszt_mdz": 6211,
+     "poziomy": [
+      46
+     ]
+    },
+    {
+     "koszt_mdz": 7651,
+     "poziomy": [
+      51
+     ]
+    },
+    {
+     "koszt_mdz": 8911,
+     "poziomy": [
+      55
+     ]
+    }
+   ],
+   "procentCeny": 100
+  },
+  "walka w ciemnosci": {
+   "pomiary": [
+    {
+     "koszt_mdz": 1,
+     "poziomy": [
+      0,
+      1
+     ]
+    },
+    {
+     "koszt_mdz": 206,
+     "poziomy": [
+      9
+     ]
+    },
+    {
+     "koszt_mdz": 684,
+     "poziomy": [
+      16
+     ]
+    },
+    {
+     "koszt_mdz": 776,
+     "poziomy": [
+      17
+     ]
+    },
+    {
+     "koszt_mdz": 1197,
+     "poziomy": [
+      21
+     ]
+    },
+    {
+     "koszt_mdz": 1317,
+     "poziomy": [
+      22
+     ]
+    },
+    {
+     "koszt_mdz": 1443,
+     "poziomy": [
+      23
+     ]
+    },
+    {
+     "koszt_mdz": 1574,
+     "poziomy": [
+      24
+     ]
+    },
+    {
+     "koszt_mdz": 1710,
+     "poziomy": [
+      25
+     ]
+    },
+    {
+     "koszt_mdz": 1853,
+     "poziomy": [
+      26
+     ]
+    },
+    {
+     "koszt_mdz": 2001,
+     "poziomy": [
+      27
+     ]
+    },
+    {
+     "koszt_mdz": 2155,
+     "poziomy": [
+      28
+     ]
+    },
+    {
+     "koszt_mdz": 2315,
+     "poziomy": [
+      29
+     ]
+    },
+    {
+     "koszt_mdz": 2480,
+     "poziomy": [
+      30
+     ]
+    },
+    {
+     "koszt_mdz": 2651,
+     "poziomy": [
+      31
+     ]
+    },
+    {
+     "koszt_mdz": 2828,
+     "poziomy": [
+      32
+     ]
+    }
+   ],
+   "procentCeny": 95
+  },
+  "walka w szyku": {
+   "pomiary": [
+    {
+     "koszt_mdz": 1,
+     "poziomy": [
+      0,
+      1
+     ]
+    },
+    {
+     "koszt_mdz": 271,
+     "poziomy": [
+      10
+     ]
+    },
+    {
+     "koszt_mdz": 547,
+     "poziomy": [
+      14
+     ]
+    },
+    {
+     "koszt_mdz": 721,
+     "poziomy": [
+      16
+     ]
+    },
+    {
+     "koszt_mdz": 1261,
+     "poziomy": [
+      21
+     ]
+    },
+    {
+     "koszt_mdz": 1387,
+     "poziomy": [
+      22
+     ]
+    },
+    {
+     "koszt_mdz": 1519,
+     "poziomy": [
+      23
+     ]
+    },
+    {
+     "koszt_mdz": 1657,
+     "poziomy": [
+      24
+     ]
+    },
+    {
+     "koszt_mdz": 1801,
+     "poziomy": [
+      25
+     ]
+    },
+    {
+     "koszt_mdz": 1951,
+     "poziomy": [
+      26
+     ]
+    },
+    {
+     "koszt_mdz": 2107,
+     "poziomy": [
+      27
+     ]
+    },
+    {
+     "koszt_mdz": 2269,
+     "poziomy": [
+      28
+     ]
+    }
+   ],
+   "procentCeny": 100
+  },
+  "wspinaczka": {
+   "pomiary": [
+    {
+     "koszt_mdz": 408,
+     "poziomy": [
+      17
+     ]
+    },
+    {
+     "koszt_mdz": 1134,
+     "poziomy": [
+      28
+     ]
+    },
+    {
+     "koszt_mdz": 1890,
+     "poziomy": [
+      36
+     ]
+    },
+    {
+     "koszt_mdz": 2583,
+     "poziomy": [
+      42
+     ]
+    },
+    {
+     "koszt_mdz": 2970,
+     "poziomy": [
+      45
+     ]
+    },
+    {
+     "koszt_mdz": 3105,
+     "poziomy": [
+      46
+     ]
+    },
+    {
+     "koszt_mdz": 3243,
+     "poziomy": [
+      47
+     ]
+    },
+    {
+     "koszt_mdz": 3384,
+     "poziomy": [
+      48
+     ]
+    },
+    {
+     "koszt_mdz": 3675,
+     "poziomy": [
+      50
+     ]
+    }
+   ],
+   "procentCeny": 50
+  },
+  "wyczucie kierunku": {
+   "pomiary": [
+    {
+     "koszt_mdz": 198,
+     "poziomy": [
+      12
+     ]
+    },
+    {
+     "koszt_mdz": 360,
+     "poziomy": [
+      16
+     ]
+    },
+    {
+     "koszt_mdz": 693,
+     "poziomy": [
+      22
+     ]
+    },
+    {
+     "koszt_mdz": 828,
+     "poziomy": [
+      24
+     ]
+    }
+   ],
+   "procentCeny": 50
+  },
+  "wykrywanie pulapek": {
+   "pomiary": [
+    {
+     "koszt_mdz": 1,
+     "poziomy": [
+      0,
+      1
+     ]
+    },
+    {
+     "koszt_mdz": 151,
+     "poziomy": [
+      9
+     ]
+    },
+    {
+     "koszt_mdz": 231,
+     "poziomy": [
+      11
+     ]
+    },
+    {
+     "koszt_mdz": 1588,
+     "poziomy": [
+      28
+     ]
+    }
+   ],
+   "procentCeny": 70
+  },
+  "zaslanianie": {
+   "pomiary": [
+    {
+     "koszt_mdz": 1,
+     "poziomy": [
+      0,
+      1
+     ]
+    },
+    {
+     "koszt_mdz": 1261,
+     "poziomy": [
+      21
+     ]
+    },
+    {
+     "koszt_mdz": 1387,
+     "poziomy": [
+      22
+     ]
+    },
+    {
+     "koszt_mdz": 1519,
+     "poziomy": [
+      23
+     ]
+    },
+    {
+     "koszt_mdz": 1657,
+     "poziomy": [
+      24
+     ]
+    },
+    {
+     "koszt_mdz": 1801,
+     "poziomy": [
+      25
+     ]
+    },
+    {
+     "koszt_mdz": 1951,
+     "poziomy": [
+      26
+     ]
+    },
+    {
+     "koszt_mdz": 2107,
+     "poziomy": [
+      27
+     ]
+    },
+    {
+     "koszt_mdz": 2269,
+     "poziomy": [
+      28
+     ]
+    },
+    {
+     "koszt_mdz": 2437,
+     "poziomy": [
+      29
+     ]
+    },
+    {
+     "koszt_mdz": 2611,
+     "poziomy": [
+      30
+     ]
+    },
+    {
+     "koszt_mdz": 2791,
+     "poziomy": [
+      31
+     ]
+    }
+   ],
+   "procentCeny": 100
+  },
+  "zielarstwo": {
+   "pomiary": [
+    {
+     "koszt_mdz": 88,
+     "poziomy": [
+      7
+     ]
+    },
+    {
+     "koszt_mdz": 277,
+     "poziomy": [
+      12
+     ]
+    },
+    {
+     "koszt_mdz": 504,
+     "poziomy": [
+      16
+     ]
+    }
+   ],
+   "procentCeny": 70
+  },
+  "znajomosc jezykow": {
+   "pomiary": [
+    {
+     "koszt_mdz": 135,
+     "poziomy": [
+      10
+     ]
+    },
+    {
+     "koszt_mdz": 513,
+     "poziomy": [
+      19
+     ]
+    },
+    {
+     "koszt_mdz": 693,
+     "poziomy": [
+      22
+     ]
+    },
+    {
+     "koszt_mdz": 759,
+     "poziomy": [
+      23
+     ]
+    },
+    {
+     "koszt_mdz": 1395,
+     "poziomy": [
+      31
+     ]
+    }
+   ],
+   "procentCeny": 50
+  }
+ }
+}
