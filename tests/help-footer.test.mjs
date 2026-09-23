@@ -16,7 +16,7 @@ const REPO = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const RELEASES = path.join(REPO, 'releases');
 
 const MIN_PADDING_PX = 20;
-const PLUGINS = ['imperium_cal'];
+const PLUGINS = ['imperium_cal', 'ishtar_cal'];
 
 function splitZip(zip) {
   const m = zip.match(/^(.+?)_(\d+(?:_\d+)*)\.zip$/);

@@ -9,7 +9,7 @@ const GAME_MINUTES_PER_DAY = 24 * 60;
 const ANCHOR_STORAGE_KEY = "dargoth.ishtar_cal.anchor.v2";
 
 // Wersja wyswietlana w pomocy (stopka)
-const PLUGIN_VERSION = "1.8.24";
+const PLUGIN_VERSION = "1.8.25";
 const PLUGIN_BUILD_DATE = "23-09-2026";
 
 type IshtarSeason =
@@ -1307,6 +1307,9 @@ function buildHelpContent(): HTMLElement {
   root.style.whiteSpace = "pre-wrap";
   root.style.lineHeight = "1.35";
   root.style.position = "relative";
+  // stopka jest absolute (bottom: 6px) — root rezerwuje pod nia miejsce,
+  // zeby nie zachodzila na ostatni akapit pomocy
+  root.style.paddingBottom = "26px";
 
   const title = document.createElement("div");
   title.textContent = "Kalendarz Ishtar";
