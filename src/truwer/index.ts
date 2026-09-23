@@ -4,8 +4,8 @@ import PluginApi, { PluginInfo } from "plugin-api";
 // Constants
 // ---------------------------------------------------------------------------
 
-const PLUGIN_VERSION = "1.0.10";
-const PLUGIN_BUILD_DATE = "12-09-2026";
+const PLUGIN_VERSION = "1.0.11";
+const PLUGIN_BUILD_DATE = "23-09-2026";
 
 const POPUP_ID = "truwer";
 const STYLE_ID = "truwer_style";
@@ -1780,6 +1780,8 @@ export async function init(api: PluginApi): Promise<PluginInfo> {
         id: POPUP_ID,
         title: "Truwer - asystent odgrywania scen",
         createContent: () => buildContent(),
+        initialWidth: 440,
+        initialHeight: 720,
     })) as unknown as PopupHandle;
 
     menuHandle = api.ui.addPopupMenuEntry("Truwer", () => togglePopup()) as unknown as MenuHandle;
