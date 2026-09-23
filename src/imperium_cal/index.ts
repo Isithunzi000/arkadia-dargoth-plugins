@@ -6,7 +6,7 @@ import PluginApi, {
 const PLUGIN_NAME = "imperium_cal";
 const TAG = "imperium_cal";
 
-const PLUGIN_VERSION = "1.8.25";
+const PLUGIN_VERSION = "1.8.26";
 const PLUGIN_BUILD_DATE = "23-09-2026";
 
 const REAL_MS_PER_GAME_MINUTE = 2000;
@@ -942,6 +942,9 @@ function buildHelpContent(): HTMLElement {
   root.style.whiteSpace = "pre-wrap";
   root.style.lineHeight = "1.35";
   root.style.position = "relative";
+  // stopka jest absolute (bottom: 6px) — root rezerwuje pod nia miejsce,
+  // zeby nie zachodzila na ostatni akapit pomocy
+  root.style.paddingBottom = "26px";
 
   const title = document.createElement("div");
   title.textContent = "Kalendarz Imperium";
