@@ -25,6 +25,7 @@ const MIN_H = 150;
 
 const EXPECTED = {
   imperium_cal: { width: 480, height: 'content' },
+  ishtar_cal:   { width: 480, height: 'content' },
 };
 
 function splitZip(zip) {

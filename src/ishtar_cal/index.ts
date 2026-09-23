@@ -9,8 +9,8 @@ const GAME_MINUTES_PER_DAY = 24 * 60;
 const ANCHOR_STORAGE_KEY = "dargoth.ishtar_cal.anchor.v2";
 
 // Wersja wyswietlana w pomocy (stopka)
-const PLUGIN_VERSION = "1.8.23";
-const PLUGIN_BUILD_DATE = "07-09-2026";
+const PLUGIN_VERSION = "1.8.24";
+const PLUGIN_BUILD_DATE = "23-09-2026";
 
 type IshtarSeason =
   | "Yule"
@@ -1431,6 +1431,8 @@ export async function init(api: PluginApi): Promise<PluginInfo> {
     id: "help",
     title: "Kalendarz Ishtar",
     createContent: async () => buildHelpContent(),
+    initialWidth: 480,
+    initialHeight: "content",
   });
 
   helpMenuHandle = api.ui.addPopupMenuEntry("Kalendarz Ishtar", () => {
