@@ -1,6 +1,6 @@
 # Pluginy do klienta Dargoth — Arkadia MUD
 
-Trzy pluginy do przeglądarowego klienta Dargoth dla gry Arkadia MUD.  
+Cztery pluginy do przeglądarowego klienta Dargoth dla gry Arkadia MUD.  
 Instalujesz raz — aktualizacje przychodzą automatycznie, nic nie musisz robić.
 
 ---
@@ -11,7 +11,7 @@ Instalujesz raz — aktualizacje przychodzą automatycznie, nic nie musisz robi�
 2. Wpisz URL pluginu który chcesz zainstalować i kliknij **Dodaj**
 3. Gotowe
 
-Możesz zainstalować jeden, dwa lub wszystkie trzy — niezależnie od siebie.
+Możesz zainstalować jeden, kilka lub wszystkie — niezależnie od siebie.
 
 ---
 
@@ -76,6 +76,28 @@ Co możesz zrobić:
 - w jednej komendzie podać kilka wariantów oddzielonych `|` — przy odgrywaniu plugin losuje jeden z nich
 - importować sceny z pliku `.txt` lub `.json`, eksportować je z powrotem
 - trzymać osobną bibliotekę scen dla każdej postaci
+
+Pomoc: przycisk **Pomoc** wewnątrz okna pluginu.
+
+---
+
+## Treningi
+
+**URL:**
+```
+https://isithunzi000.github.io/arkadia-dargoth-plugins/treningi.js
+```
+
+Wpisz `/treningi` żeby otworzyć okno pluginu (albo kliknij **Treningi** w menu Skrypty).
+
+Kalkulator kosztów treningu umiejętności. Wybierasz umiejętność, podajesz przedział poziomów od–do i cenę jednego treningu — plugin liczy łączny koszt w miedziakach, srebrnikach i złotych.
+
+Co możesz zrobić:
+
+- wybierać z ponad 30 umiejętności z gotowymi cenami albo wpisać „inną umiejętność" z własnym procentem ceny
+- wpisywać cenę spinnerami lub ręcznie (złote, srebrne, miedziane)
+- dla ciosów specjalnych przełączać wariant z poleceniem stowarzyszenia
+- zobaczyć tabelę poziomów maksymalnych umiejętności wg zawodu (przycisk **Tabela**)
 
 Pomoc: przycisk **Pomoc** wewnątrz okna pluginu.
 
