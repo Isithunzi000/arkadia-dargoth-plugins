@@ -348,8 +348,8 @@ export function limitWyswietlany(
 // UI PLUGINU (popup, lista, pola, wyniki, stopka)
 // ==========================================================================
 
-const PLUGIN_VERSION = "1.6.7";
-const PLUGIN_BUILD_DATE = "23-09-2026";
+const PLUGIN_VERSION = "1.6.8";
+const PLUGIN_BUILD_DATE = "24-09-2026";
 
 const POPUP_ID = "treningi";
 const LS_KEY = "arkadia_treningi_stan_v1";

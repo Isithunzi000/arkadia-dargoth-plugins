@@ -3,10 +3,10 @@
   "entryPoint": "index.ts",
   "metadata": {
     "name": "treningi",
-    "version": "1.6.7",
+    "version": "1.6.8",
     "author": "Isithunzi000",
     "description": "Kalkulator cen treningow dla gry Arkadia (alias /treningi): obecny poziom umiejetnosci z kosztu treningu i koszt przedzialu treningow. Plugin w pelni zgodny z regulaminem gry - czysty kalkulator, zero automatyki, zero wysylania komend."
   },
   "folders": [],
-  "version": "1.6.7"
+  "version": "1.6.8"
 }

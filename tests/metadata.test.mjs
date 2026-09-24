@@ -22,6 +22,11 @@ const EXPECTED = {
     author: 'Isithunzi000',
     description: 'Kalendarz Ishtar wylicza czas RL dla wydarzeń domeny bazując na czasie IG uzyskanym z gry (alias /ishtar).',
   },
+  treningi: {
+    author: 'Isithunzi000',
+    version: '1.6.8',
+    description: 'Kalkulator cen treningow dla gry Arkadia (alias /treningi): obecny poziom umiejetnosci z kosztu treningu i koszt przedzialu treningow. Plugin w pelni zgodny z regulaminem gry - czysty kalkulator, zero automatyki, zero wysylania komend.',
+  },
   truwer: {
     author: 'Isithunzi000',
     description: 'Truwer to asystent odgrywania sekwencyjnego, śpiewanie piosenek, deklamowanie wierszy, odgrywanie scen lub rytuałów (alias /truwer). Plugin w pełni zgodny z regulaminem gry — wszystkie komendy wysyłane świadomie przez gracza, bez automatyki.',
@@ -63,6 +68,9 @@ for (const [plugin, want] of Object.entries(EXPECTED)) {
     const zip = latest[plugin];
     assert.ok(zip, `brak zipa dla ${plugin} w releases/`);
     const zipVer = splitZip(zip).ver.join('.');
+    if (want.version) {
+      assert.equal(zipVer, want.version, `${plugin}: najnowszy zip != oczekiwana wersja`);
+    }
 
     const ts = unzipText(zip, `${plugin}/index.ts`);
     const pj = JSON.parse(unzipText(zip, `${plugin}/plugin.json`));
