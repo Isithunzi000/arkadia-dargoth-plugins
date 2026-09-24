@@ -6,6 +6,11 @@ on:
     paths:
       - "releases/*.zip"
       - "scripts/build.js"
+      - "src/**"
+      - "tests/**"
+      - "package.json"
+      - "tsconfig*.json"
+      - ".github/workflows/build.yml"
   workflow_dispatch:
 
 permissions:
@@ -27,8 +32,14 @@ jobs:
         with:
           node-version: "24"
 
-      - name: Install esbuild
-        run: npm install esbuild
+      - name: Install dependencies
+        run: npm install
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Tests
+        run: DARGOTH_TEST_NODE_PATH=$PWD/node_modules npm test
 
       - name: Build plugins
         run: node scripts/build.js

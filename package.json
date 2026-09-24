@@ -4,9 +4,13 @@
   "type": "commonjs",
   "description": "Pluginy do klienta Dargoth dla gry Arkadia MUD",
   "scripts": {
-    "build": "node scripts/build.js"
+    "build": "node scripts/build.js",
+    "test": "tsc -p tsconfig.test.json && node --test out-test/tests/*.test.js tests/*.test.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.test.json"
   },
   "devDependencies": {
-    "esbuild": "^0.24.0"
+    "esbuild": "^0.24.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.6.0"
   }
 }
