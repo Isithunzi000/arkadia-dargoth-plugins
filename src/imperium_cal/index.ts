@@ -6,8 +6,8 @@ import PluginApi, {
 const PLUGIN_NAME = "imperium_cal";
 const TAG = "imperium_cal";
 
-const PLUGIN_VERSION = "1.8.26";
-const PLUGIN_BUILD_DATE = "23-09-2026";
+const PLUGIN_VERSION = "1.8.27";
+const PLUGIN_BUILD_DATE = "09-10-2026";
 
 const REAL_MS_PER_GAME_MINUTE = 2000;
 const YEAR_LENGTH_DAYS = 400;
@@ -206,9 +206,10 @@ const INTERCALARY_MONTHS = new Set(
 );
 
 // Geheimnisnacht: event GM-owy. Kandydaci = jesienne pelnie Mannslieba (te same,
-// co w FULL_MOONS). MG synchronizuje zegar tak, by noc pelni wypadla w wieczornym
-// prime time RL; event to sama noc pelni (bez przesuwania o dni). Potwierdzone
-// empirycznie: 11.08.2026 ok. 20:00 = noc pelni 1 Nachgeheim (zachod 19:57 PL).
+// co w FULL_MOONS). MG synchronizuje zegar tak, by noc wypadla w wieczornym
+// prime time RL. Noc = doba NASTEPUJACA po pelni kandydujacej (g+1):
+// [zachod(g+1), wschod(g+2)]. Potwierdzone empirycznie 10.2026: event
+// 2 Nachgeheim ~20:55 RL i 2 Kaltezeit 20:45 RL.
 const GEHEIMNISNACHT_FULLS: MonthDay[] = [
   { dayOfMonth: 1, month: "Nachgeheim" },   // doy 201
   { dayOfMonth: 26, month: "Nachgeheim" },  // doy 226
@@ -222,7 +223,8 @@ const GEHEIMNISNACHT_FULLS: MonthDay[] = [
 // czasowej przegladarki gracza i od zmiany czasu letni/zimowy.
 const GN_WINDOW_START_MIN = 19 * 60;      // 19:00 = 1140
 const GN_WINDOW_END_MIN = 21 * 60;        // 21:00 = 1260
-const GN_PRIME_MIN = 20 * 60;             // 20:00 = 1200 (srodek okna)
+const GN_PRIME_MIN = 1250;                // 20:50 - cel MG wg danych 10.2026
+                                          // (zegary RL eventu: 20:55 i 20:45)
 const GN_SCAN_YEARS = 4;                  // ile kolejnych lat IG przeszukac (zapas)
 const GN_CLUSTER_MS = 180 * 60 * 1000;    // 3 h RL: prog "ten sam cykl" przy wyborze nocy
 
@@ -547,36 +549,15 @@ function toSortedDoyList(list: MonthDay[]): number[] {
   return out.sort((a, b) => a - b);
 }
 
-function buildNewMoonDoyToIndexMap(
-  sortedNewMoonDoy: number[]
-): Map<number, number> {
-  const map = new Map<number, number>();
-
-  for (let i = 0; i < NEW_MOONS.length; i++) {
-    const md = NEW_MOONS[i];
-    const doy = dayOfYearFromMonthDay(md.month, md.dayOfMonth);
-    if (typeof doy !== "number") continue;
-    map.set(normalizeDayOfYear(doy), i);
-  }
-
-  for (const d of sortedNewMoonDoy) {
-    if (!map.has(d)) return new Map();
-  }
-
-  return map;
-}
-
 function computeSanityAndLists(): {
   ok: boolean;
   newMoons: number[];
   fullMoons: number[];
-  newMoonDoyToIndex: Map<number, number>;
 } {
   const fail = () => ({
     ok: false,
     newMoons: [] as number[],
     fullMoons: [] as number[],
-    newMoonDoyToIndex: new Map<number, number>(),
   });
 
   const totalDays = IMP_MONTHS.reduce((acc, m) => acc + m.days, 0);
@@ -624,17 +605,13 @@ function computeSanityAndLists(): {
   if (newMoons.length === 0) return fail();
   if (fullMoons.length === 0) return fail();
 
-  const newMoonDoyToIndex = buildNewMoonDoyToIndexMap(newMoons);
-  if (newMoonDoyToIndex.size === 0) return fail();
-
-  return { ok: true, newMoons, fullMoons, newMoonDoyToIndex };
+  return { ok: true, newMoons, fullMoons };
 }
 
 const SANITY = computeSanityAndLists();
 const SANITY_OK = SANITY.ok;
 const SORTED_NEW_MOON_DOY = SANITY.newMoons;
 const SORTED_FULL_MOON_DOY = SANITY.fullMoons;
-const NEW_MOON_DOY_TO_INDEX = SANITY.newMoonDoyToIndex;
 
 function pushEventTimingLines(
   lines: string[],
@@ -700,8 +677,8 @@ function computeGeheimnisnachtNight(
     const fdoy = dayOfYearFromMonthDay(f.month, f.dayOfMonth);
     if (typeof fdoy !== "number") continue;
 
-    // Noc Geheimnisnacht = sama noc pelni (offset 0 dni).
-    const nightDoy = normalizeDayOfYear(fdoy);
+    // Noc Geheimnisnacht = doba nastepujaca po pelni (offset +1 doba).
+    const nightDoy = normalizeDayOfYear(fdoy + 1);
     const sunsetH = sunsetHourForDoy(nightDoy);
     const sunriseH = sunriseHourForDoy(normalizeDayOfYear(nightDoy + 1));
     const nightDuration = (24 - sunsetH + sunriseH) * 60;
@@ -755,6 +732,69 @@ function computeGeheimnisnachtNight(
   }
 
   return best ? { trwa: false, deltaMin: best.deltaMin, nightDoy: best.nightDoy } : null;
+}
+
+// Now (Mannslieb): moment fazowy = 03:00 IG doby nastepujacej po dobie z
+// tabeli NEW_MOONS; pierwsza bezksiezycowa noc = [zachod(d+1), wschod(d+2)].
+// Potwierdzone empirycznie 10.2026: zegar RL 18:47 = 03:00 IG doby 390
+// (tabela: Vorhexen 22 = doba 389). Kwadrans 03:00 to najslabszy punkt
+// specyfikacji - jedna obserwacja minutowa.
+const NEW_MOON_FLIP_HOUR = 3;
+
+function computeNewMoonNight(now: GameTime, nowReal: Date): NachtResult {
+  const yearMin = YEAR_LENGTH_DAYS * GAME_MINUTES_PER_DAY;
+  let best: { deltaMin: number; nightDoy: number } | null = null;
+
+  for (const d of SORTED_NEW_MOON_DOY) {
+    const nightDoy = normalizeDayOfYear(d + 1);
+    const sunsetH = sunsetHourForDoy(nightDoy);
+    const sunriseH = sunriseHourForDoy(normalizeDayOfYear(nightDoy + 1));
+    const nightDuration = (24 - sunsetH + sunriseH) * 60;
+
+    const baseDelta = deltaGameMinutes(now, {
+      dayOfYear: nightDoy,
+      hour: sunsetH,
+      minute: 0,
+    });
+
+    // TRWA: start nocy mniej niz nightDuration temu (delta zawinela sie
+    // przez koniec roku). Start/koniec wylaczne - w minucie startu delta=0
+    // i raport pokazuje "za 0 min", nie TRWA.
+    if (baseDelta > yearMin - nightDuration && baseDelta < yearMin) {
+      return {
+        trwa: true,
+        deltaMin: baseDelta - (yearMin - nightDuration),
+        nightDoy,
+      };
+    }
+
+    if (best === null || baseDelta < best.deltaMin) {
+      best = { deltaMin: baseDelta, nightDoy };
+    }
+  }
+
+  return { trwa: false, deltaMin: best!.deltaMin, nightDoy: best!.nightDoy };
+}
+
+function computeNewMoonFlip(
+  now: GameTime,
+  nowReal: Date
+): { deltaMin: number; doy: number } {
+  let best: { deltaMin: number; doy: number } | null = null;
+
+  for (const d of SORTED_NEW_MOON_DOY) {
+    const flipDoy = normalizeDayOfYear(d + 1);
+    const baseDelta = deltaGameMinutes(now, {
+      dayOfYear: flipDoy,
+      hour: NEW_MOON_FLIP_HOUR,
+      minute: 0,
+    });
+    if (best === null || baseDelta < best.deltaMin) {
+      best = { deltaMin: baseDelta, doy: flipDoy };
+    }
+  }
+
+  return { deltaMin: best!.deltaMin, doy: best!.doy };
 }
 
 function buildReport(nowRaw: GameTime): string[] {
@@ -820,60 +860,37 @@ function buildReport(nowRaw: GameTime): string[] {
   lines.push("");
   lines.push("Najblizsze wydarzenia ksiezycowe:");
 
-  const nowDoyForMoon = normalizeDayOfYear(now.dayOfYear);
-  const todayNewMoonIdx = NEW_MOON_DOY_TO_INDEX.get(nowDoyForMoon) ?? -1;
+  // Now: moment fazowy = 03:00 IG doby nastepujacej po dobie z tabeli
+  // NEW_MOONS (dane empiryczne 10.2026, zgodnie ze zlotym standardem
+  // arkadia-kalendarze-testy ref_now_flip).
+  const flip = computeNewMoonFlip(now, nowReal);
+  const flipReal = new Date(
+    nowReal.getTime() + flip.deltaMin * REAL_MS_PER_GAME_MINUTE
+  );
+  lines.push(`  *** Now astronomiczny ***`);
+  lines.push(`    Data RL: ${formatRealDate(flipReal)}`);
+  lines.push(`    Za:      ${formatRealDeltaFromGameMinutes(flip.deltaMin)}`);
 
-  if (todayNewMoonIdx >= 0) {
-    const sunsetHour = sunsetHourForDoy(nowDoyForMoon);
-    lines.push(`  *** Now astronomiczny ***`);
-    pushEventTimingLines(lines, now, nowReal, nowDoyForMoon);
-    if (typeof sunsetHour === "number" && now.hour >= sunsetHour) {
-      const minutesToEndOfDay = (24 - now.hour) * 60 - now.minute;
-      const endReal = new Date(
-        nowReal.getTime() + minutesToEndOfDay * REAL_MS_PER_GAME_MINUTE
-      );
-      lines.push(`  +++ Now widoczny TERAZ +++`);
-      lines.push(`    TRWA TERAZ (do ${formatRealDate(endReal)})`);
-      lines.push(`    Zachod:  ${pad2(sunsetHour)}:00 IG`);
-    } else if (typeof sunsetHour === "number") {
-      const minutesToSunset = (sunsetHour - now.hour) * 60 - now.minute;
-      const sunsetReal = new Date(
-        nowReal.getTime() + minutesToSunset * REAL_MS_PER_GAME_MINUTE
-      );
-      lines.push(`  +++ Now widoczny dzis po zachodzie slonca +++`);
-      lines.push(`    Data RL: ${formatRealDate(sunsetReal)}`);
-      lines.push(`    Zachod:  ${pad2(sunsetHour)}:00 IG`);
-      lines.push(`    Za:      ${formatRealDeltaFromGameMinutes(minutesToSunset)}`);
-    }
-  } else {
-    const newDoy = nextFromSortedList(now, SORTED_NEW_MOON_DOY);
-    const newDeltaMin = deltaGameMinutes(now, {
-      dayOfYear: newDoy,
-      hour: 0,
-      minute: 0,
-    });
-    const newReal = new Date(
-      nowReal.getTime() + newDeltaMin * REAL_MS_PER_GAME_MINUTE
+  // Pierwsza bezksiezycowa noc: [zachod(d+1), wschod(d+2)].
+  const nn = computeNewMoonNight(now, nowReal);
+  const nnMd = monthDayFromDayOfYear(nn.nightDoy);
+  const nnLabel = nnMd
+    ? `${nnMd.month} ${nnMd.dayOfMonth}, dzien ${nn.nightDoy}`
+    : `dzien ${nn.nightDoy}`;
+  lines.push(`  +++ Now widoczny (pierwsza bezksiezycowa noc) +++`);
+  if (nn.trwa) {
+    const nnEnd = new Date(
+      nowReal.getTime() + nn.deltaMin * REAL_MS_PER_GAME_MINUTE
     );
-    lines.push(`  *** Now astronomiczny ***`);
-    lines.push(`    Data RL: ${formatRealDate(newReal)}`);
-    lines.push(`    Za:      ${formatRealDeltaFromGameMinutes(newDeltaMin)}`);
-
-    const sunsetHour = sunsetHourForDoy(newDoy);
-    if (typeof sunsetHour === "number") {
-      const sunsetDeltaMin = deltaGameMinutes(now, {
-        dayOfYear: newDoy,
-        hour: sunsetHour,
-        minute: 0,
-      });
-      const sunsetReal = new Date(
-        nowReal.getTime() + sunsetDeltaMin * REAL_MS_PER_GAME_MINUTE
-      );
-      lines.push(`  +++ Now widoczny po zachodzie slonca +++`);
-      lines.push(`    Data RL: ${formatRealDate(sunsetReal)}`);
-      lines.push(`    Zachod:  ${pad2(sunsetHour)}:00 IG`);
-      lines.push(`    Za:      ${formatRealDeltaFromGameMinutes(sunsetDeltaMin)}`);
-    }
+    lines.push(`    TRWA TERAZ (do ${formatRealDate(nnEnd)})`);
+    lines.push(`    ${nnLabel}`);
+  } else {
+    const nnStart = new Date(
+      nowReal.getTime() + nn.deltaMin * REAL_MS_PER_GAME_MINUTE
+    );
+    lines.push(`    Data RL: ${formatRealDate(nnStart)}`);
+    lines.push(`    Za:      ${formatRealDeltaFromGameMinutes(nn.deltaMin)}`);
+    lines.push(`    ${nnLabel}`);
   }
 
   const nowDoyForFull = normalizeDayOfYear(now.dayOfYear);
