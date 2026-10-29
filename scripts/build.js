@@ -112,6 +112,6 @@ const zipsToBuild = Object.values(latestByPlugin).sort();
         JSON.stringify({ built: new Date().toISOString(), plugins: index }, null, 2)
     );
 
-    console.log(`\nGotowe: ${ok}/${zips.length} pluginow`);
+    console.log(`\nGotowe: ${ok}/${zipsToBuild.length} pluginow`);
     fs.readdirSync(DIST).forEach(f => console.log("  " + f));
 })();

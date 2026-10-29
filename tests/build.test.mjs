@@ -69,6 +69,24 @@ test('D4: uszkodzony zip -> POMINIETY + exit != 0, ale dobry plugin sie buduje (
   );
 });
 
+test('D5: podsumowanie builda liczy najnowsze zips per plugin, nie cala historie', () => {
+  const root = makeFixture();
+  makeGoodZip(root, 'dobry_1_0_0.zip');
+  makeGoodZip(root, 'dobry_1_0_1.zip');
+  const r = runBuild(root);
+  const log = r.stdout + r.stderr;
+  assert.equal(r.status, 0, log);
+  assert.ok(log.includes('Gotowe: 1/1 pluginow'), 'mylacy licznik builda: ' + log);
+});
+
+test('D6: README opisuje aktualne sciezki uruchamiajace workflow', () => {
+  const readme = fs.readFileSync(path.join(REPO, 'README.md'), 'utf8');
+  for (const trigger of ['releases/*.zip', 'scripts/build.js', 'src/**', 'tests/**']) {
+    assert.ok(readme.includes('`' + trigger + '`'), 'README nie wymienia triggera ' + trigger);
+  }
+  assert.ok(!readme.includes('odpala się wyłącznie przy zmianie `releases/*.zip`'));
+});
+
 test('R3: make_release_zip odrzuca wersje nie-X.Y.Z (1.2.3.4, 1..2)', () => {
   for (const bad of ['1.2.3.4', '1..2']) {
     const root = makeFixture();
