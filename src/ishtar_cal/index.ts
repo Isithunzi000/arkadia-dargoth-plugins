@@ -9,7 +9,7 @@ const GAME_MINUTES_PER_DAY = 24 * 60;
 const ANCHOR_STORAGE_KEY = "dargoth.ishtar_cal.anchor.v2";
 
 // Wersja wyswietlana w pomocy (stopka)
-const PLUGIN_VERSION = "1.8.25";
+const PLUGIN_VERSION = "1.8.26";
 const PLUGIN_BUILD_DATE = "23-09-2026";
 
 type IshtarSeason =
@@ -139,8 +139,21 @@ function pad2(n: number): string {
   return String(n).padStart(2, "0");
 }
 
+// Etykiety RL zawsze w Europe/Warsaw (niezaleznie od TZ maszyny).
+const WARSAW_DATE_FORMATTER = new Intl.DateTimeFormat("pl-PL", {
+  timeZone: "Europe/Warsaw",
+  hourCycle: "h23",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+});
+
 function formatRealDateTime(date: Date): string {
-  return `${pad2(date.getDate())}-${pad2(date.getMonth() + 1)}-${date.getFullYear()} ${pad2(date.getHours())}:${pad2(date.getMinutes())}`;
+  const parts: Record<string, string> = {};
+  for (const p of WARSAW_DATE_FORMATTER.formatToParts(date)) parts[p.type] = p.value;
+  return `${parts.day}-${parts.month}-${parts.year} ${parts.hour}:${parts.minute}`;
 }
 
 function wrapOutput(text: string): string {

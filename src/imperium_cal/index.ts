@@ -6,7 +6,7 @@ import PluginApi, {
 const PLUGIN_NAME = "imperium_cal";
 const TAG = "imperium_cal";
 
-const PLUGIN_VERSION = "1.8.29";
+const PLUGIN_VERSION = "1.8.30";
 const PLUGIN_BUILD_DATE = "09-10-2026";
 
 const REAL_MS_PER_GAME_MINUTE = 2000;
@@ -284,8 +284,22 @@ function pad2(n: number): string {
   return String(n).padStart(2, "0");
 }
 
+// Etykiety RL zawsze w Europe/Warsaw (niezaleznie od TZ maszyny) - ten sam
+// formatter co zegar GN, pelna data-czas zamiast samych minut zegara.
+const WARSAW_DATE_FORMATTER = new Intl.DateTimeFormat("pl-PL", {
+  timeZone: "Europe/Warsaw",
+  hourCycle: "h23",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+});
+
 function formatRealDate(d: Date): string {
-  return `${pad2(d.getDate())}-${pad2(d.getMonth() + 1)}-${d.getFullYear()} ${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
+  const parts: Record<string, string> = {};
+  for (const p of WARSAW_DATE_FORMATTER.formatToParts(d)) parts[p.type] = p.value;
+  return `${parts.day}-${parts.month}-${parts.year} ${parts.hour}:${parts.minute}`;
 }
 
 function truncateToMinute(d: Date): Date {
