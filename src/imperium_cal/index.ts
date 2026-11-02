@@ -6,7 +6,7 @@ import PluginApi, {
 const PLUGIN_NAME = "imperium_cal";
 const TAG = "imperium_cal";
 
-const PLUGIN_VERSION = "1.8.30";
+const PLUGIN_VERSION = "1.8.31";
 const PLUGIN_BUILD_DATE = "09-10-2026";
 
 const REAL_MS_PER_GAME_MINUTE = 2000;
@@ -873,6 +873,12 @@ function buildReport(nowRaw: GameTime): string[] {
   lines.push("");
   lines.push("Najblizsze wydarzenia ksiezycowe:");
 
+  // Kolejnosc wpisow wg faktycznego startu RL (kanon: pełnia moze wypasc
+  // przed nowiem, wiec sztywna kolejnosc byla mylaca). Trwajace wydarzenie
+  // (start w przeszlosci) przed wszystkimi przyszlymi, potem niemalejaco
+  // po dolnym przedziale czasowym.
+  const moonEvents: { sortKey: number; lines: string[] }[] = [];
+
   // Now: moment fazowy = 03:00 IG doby nastepujacej po dobie z tabeli
   // NEW_MOONS (dane empiryczne 10.2026, zgodnie ze zlotym standardem
   // arkadia-kalendarze-testy ref_now_flip).
@@ -880,9 +886,14 @@ function buildReport(nowRaw: GameTime): string[] {
   const flipReal = new Date(
     nowReal.getTime() + flip.deltaMin * REAL_MS_PER_GAME_MINUTE
   );
-  lines.push(`  *** Now astronomiczny ***`);
-  lines.push(`    Data RL: ${formatRealDate(flipReal)}`);
-  lines.push(`    Za:      ${formatRealDeltaFromGameMinutes(flip.deltaMin)}`);
+  moonEvents.push({
+    sortKey: flip.deltaMin,
+    lines: [
+      `  *** Now astronomiczny ***`,
+      `    Data RL: ${formatRealDate(flipReal)}`,
+      `    Za:      ${formatRealDeltaFromGameMinutes(flip.deltaMin)}`,
+    ],
+  });
 
   // Pierwsza bezksiezycowa noc: [zachod(d+1), wschod(d+2)].
   const nn = computeNewMoonNight(now, nowReal);
@@ -890,28 +901,50 @@ function buildReport(nowRaw: GameTime): string[] {
   const nnLabel = nnMd
     ? `${nnMd.month} ${nnMd.dayOfMonth}, dzien ${nn.nightDoy}`
     : `dzien ${nn.nightDoy}`;
-  lines.push(`  +++ Now widoczny +++`);
+  const nnLines = [`  +++ Now widoczny +++`];
   if (nn.trwa) {
     const nnEnd = new Date(
       nowReal.getTime() + nn.deltaMin * REAL_MS_PER_GAME_MINUTE
     );
-    lines.push(`    TRWA TERAZ (do ${formatRealDate(nnEnd)})`);
-    lines.push(`    ${nnLabel}`);
+    nnLines.push(`    TRWA TERAZ (do ${formatRealDate(nnEnd)})`);
+    nnLines.push(`    ${nnLabel}`);
   } else {
     const nnStart = new Date(
       nowReal.getTime() + nn.deltaMin * REAL_MS_PER_GAME_MINUTE
     );
-    lines.push(`    Data RL: ${formatRealDate(nnStart)}`);
-    lines.push(`    Za:      ${formatRealDeltaFromGameMinutes(nn.deltaMin)}`);
-    lines.push(`    ${nnLabel}`);
+    nnLines.push(`    Data RL: ${formatRealDate(nnStart)}`);
+    nnLines.push(`    Za:      ${formatRealDeltaFromGameMinutes(nn.deltaMin)}`);
+    nnLines.push(`    ${nnLabel}`);
   }
+  moonEvents.push({ sortKey: nn.trwa ? -1 : nn.deltaMin, lines: nnLines });
 
   const nowDoyForFull = normalizeDayOfYear(now.dayOfYear);
   const fullDoy = SORTED_FULL_MOON_DOY.includes(nowDoyForFull)
     ? nowDoyForFull
     : nextFromSortedList(now, SORTED_FULL_MOON_DOY);
-  lines.push(`  Pelnia astronomiczna`);
-  pushEventTimingLines(lines, now, nowReal, fullDoy);
+  const fullLines = [`  Pelnia astronomiczna`];
+  let fullSortKey: number;
+  if (normalizeDayOfYear(now.dayOfYear) === normalizeDayOfYear(fullDoy)) {
+    const minutesToEndOfDay = (24 - now.hour) * 60 - now.minute;
+    const endReal = new Date(
+      nowReal.getTime() + minutesToEndOfDay * REAL_MS_PER_GAME_MINUTE
+    );
+    fullLines.push(`    Dzis (dzien ${normalizeDayOfYear(fullDoy)})`);
+    fullLines.push(`    TRWA TERAZ (do ${formatRealDate(endReal)})`);
+    fullSortKey = -1;
+  } else {
+    const deltaMin = deltaGameMinutes(now, { dayOfYear: fullDoy, hour: 0, minute: 0 });
+    const real = new Date(nowReal.getTime() + deltaMin * REAL_MS_PER_GAME_MINUTE);
+    fullLines.push(`    Data RL: ${formatRealDate(real)}`);
+    fullLines.push(`    Za:      ${formatRealDeltaFromGameMinutes(deltaMin)}`);
+    fullSortKey = deltaMin;
+  }
+  moonEvents.push({ sortKey: fullSortKey, lines: fullLines });
+
+  moonEvents.sort((a, b) => a.sortKey - b.sortKey);
+  for (const ev of moonEvents) {
+    for (const l of ev.lines) lines.push(l);
+  }
 
   // --- Inne swieta interkalarne (bez Hexentag) ---
   const otherIntercalary = INTERCALARY_EVENTS
