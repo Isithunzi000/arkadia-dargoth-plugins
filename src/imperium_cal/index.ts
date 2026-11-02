@@ -6,7 +6,7 @@ import PluginApi, {
 const PLUGIN_NAME = "imperium_cal";
 const TAG = "imperium_cal";
 
-const PLUGIN_VERSION = "1.8.28";
+const PLUGIN_VERSION = "1.8.29";
 const PLUGIN_BUILD_DATE = "09-10-2026";
 
 const REAL_MS_PER_GAME_MINUTE = 2000;
@@ -876,7 +876,7 @@ function buildReport(nowRaw: GameTime): string[] {
   const nnLabel = nnMd
     ? `${nnMd.month} ${nnMd.dayOfMonth}, dzien ${nn.nightDoy}`
     : `dzien ${nn.nightDoy}`;
-  lines.push(`  +++ Now widoczny (pierwsza bezksiezycowa noc) +++`);
+  lines.push(`  +++ Now widoczny +++`);
   if (nn.trwa) {
     const nnEnd = new Date(
       nowReal.getTime() + nn.deltaMin * REAL_MS_PER_GAME_MINUTE
