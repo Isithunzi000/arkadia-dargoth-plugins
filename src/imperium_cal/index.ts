@@ -6,7 +6,7 @@ import PluginApi, {
 const PLUGIN_NAME = "imperium_cal";
 const TAG = "imperium_cal";
 
-const PLUGIN_VERSION = "1.8.27";
+const PLUGIN_VERSION = "1.8.28";
 const PLUGIN_BUILD_DATE = "09-10-2026";
 
 const REAL_MS_PER_GAME_MINUTE = 2000;
@@ -221,10 +221,9 @@ const GEHEIMNISNACHT_FULLS: MonthDay[] = [
 // Okno RL w minutach od polnocy zegara EUROPE/WARSAW. MG celuja w prime time PL,
 // wiec okno jest liczone wg czasu polskiego (przez Intl) - niezaleznie od strefy
 // czasowej przegladarki gracza i od zmiany czasu letni/zimowy.
-const GN_WINDOW_START_MIN = 19 * 60;      // 19:00 = 1140
-const GN_WINDOW_END_MIN = 21 * 60;        // 21:00 = 1260
-const GN_PRIME_MIN = 1250;                // 20:50 - cel MG wg danych 10.2026
-                                          // (zegary RL eventu: 20:55 i 20:45)
+const GN_WINDOW_START_MIN = 20 * 60;      // 20:00 = 1200
+const GN_WINDOW_END_MIN = 22 * 60;        // 22:00 = 1320
+const GN_PRIME_MIN = 1285;                // 21:25 - zmiana okna prime time (faza 11.2026)
 const GN_SCAN_YEARS = 4;                  // ile kolejnych lat IG przeszukac (zapas)
 const GN_CLUSTER_MS = 180 * 60 * 1000;    // 3 h RL: prog "ten sam cykl" przy wyborze nocy
 
